@@ -114,6 +114,9 @@ public class PlayField {
 		if (this.field[position.getX()][position.getY()] != null) {
 			throw new IllegalStateException("On this field is already a character");
 		}
+		if (this.playersTurn.getCharacter() != character) {
+			throw new IllegalStateException("How can you place the character? It is not your turn!");
+		}
 		this.field[position.getX()][position.getY()] = character.toString();
 	}
 	
