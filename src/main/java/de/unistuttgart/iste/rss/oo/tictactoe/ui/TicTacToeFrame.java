@@ -56,7 +56,8 @@ public class TicTacToeFrame extends Parent {
         	tileButtons.setHgap(5.0);
         	tileButtons.setVgap(0.0);
     		for (int x = 0; x < 3; x++) {
-    			Button button = new Button(x + " " + y);
+    			Position position = new Position(x, y);
+    			Button button = new Button(position.toString());
     			button.setPrefSize(100, 100);
     			button.setOnAction(new EventHandler<ActionEvent>() {
 					@Override
@@ -65,7 +66,7 @@ public class TicTacToeFrame extends Parent {
 					}
 				});
     			tileButtons.getChildren().add(button);
-    			positionByButton.put(button, new Position(x, y));
+    			positionByButton.put(button, position);
     		}
     		root.getChildren().add(tileButtons);
     	} 
