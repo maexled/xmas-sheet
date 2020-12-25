@@ -78,8 +78,7 @@ public class TicTacToeFrame extends Parent {
         
         final Label dran = new Label("Es ist dran: ");
         playersTurnTextLabel = new Label("UNKNOWN");
-        playersTurnTextLabel.setText(game.getPlayField().getPlayersTurn().getCharacter().toString());
-        playersTurnTextLabel.setStyle("-fx-background-color: " + game.getPlayField().getPlayersTurn().getColor());
+        changePlayersTurn();
         
     	final Button reset = new Button("Reset");
         reset.setPrefSize(80, 40);
@@ -109,24 +108,85 @@ public class TicTacToeFrame extends Parent {
     	}
     	final Player playersTurn = game.getPlayField().getPlayersTurn();
     	final Position position = positionByButton.get(button);
-    	game.place(position);
-    	button.setText(playersTurn.getCharacter().toString());   	
-    	button.setStyle("-fx-background-color: " + playersTurn.getColor());
+    	try {
+    		game.place(position);
+    		clearWinLabel();
+    	} catch(IllegalStateException ex) {
+    		alertClickEmptyField();
+        	return;
+    	}
+    	claimButton(button, playersTurn);
     	
     	if (game.getPlayField().isFull()) {
-    		playersTurnTextLabel.setText("");
-        	playersTurnTextLabel.setStyle("");
-        	winLabel.setText("Keiner hat gewonnen!");
-        	winLabel.setStyle("-fx-font-size: 20; -fx-background-color: #FFC080");
+    		clearPlayerTurnsLabel();
+        	alertNobodyWon();
     	} else if (game.isFinished()) {
-    		playersTurnTextLabel.setText("");
-        	playersTurnTextLabel.setStyle("");
-        	winLabel.setText(playersTurn.getCharacter() + " hat gewonnnen!");
-        	winLabel.setStyle("-fx-font-size: 20; -fx-background-color: " + game.getPlayField().getPlayersTurn().getColor());
+    		clearPlayerTurnsLabel();
+        	alertPlayerWon(playersTurn);
     	} else {
-    		playersTurnTextLabel.setText(game.getPlayField().getPlayersTurn().getCharacter().toString());
-        	playersTurnTextLabel.setStyle("-fx-background-color: " + game.getPlayField().getPlayersTurn().getColor());
+    		changePlayersTurn();
     	}
     }
+
+    /**
+     * Claims the button as selected from the player.
+     * 
+     * @param button that is clicked
+     * @param playersTurn who claims the field
+     */
+	private void claimButton(Button button, final Player playersTurn) {
+		button.setText(playersTurn.getCharacter().toString());   	
+    	button.setStyle("-fx-background-color: " + playersTurn.getColor());
+	}
+
+	/**
+	 * Updates the label who is next.
+	 */
+	private void changePlayersTurn() {
+		playersTurnTextLabel.setText(game.getPlayField().getPlayersTurn().getCharacter().toString());
+		playersTurnTextLabel.setStyle("-fx-background-color: " + game.getPlayField().getPlayersTurn().getColor());
+	}
+	
+	/**
+	 * Show the text that nobody won.
+	 */
+	private void alertNobodyWon() {
+		winLabel.setText("Keiner hat gewonnen!");
+		winLabel.setStyle("-fx-font-size: 20; -fx-background-color: #FFC080");
+	}
+
+	/**
+	 * Show who won the game.
+	 * 
+	 * @param playersTurn who has won
+	 */
+	private void alertPlayerWon(final Player playersTurn) {
+		winLabel.setText(playersTurn.getCharacter() + " hat gewonnnen!");
+		winLabel.setStyle("-fx-font-size: 20; -fx-background-color: " + game.getPlayField().getPlayersTurn().getColor());
+	}
+
+	/**
+	 * Clears the win label.
+	 */
+	private void clearWinLabel() {
+		winLabel.setText("");
+		winLabel.setStyle("");
+	}
+	
+	/**
+	 * clears the label who is next.
+	 */
+	private void clearPlayerTurnsLabel() {
+		playersTurnTextLabel.setText("");
+		playersTurnTextLabel.setStyle("");
+	}
+
+	/**
+	 * Alert that the player clicked a field that is already claimed.
+	 */
+	private void alertClickEmptyField() {
+		winLabel.setText("Klicke auf ein leeres Feld!");
+		winLabel.setStyle("-fx-background-color: #FFC080");
+	}
 
 }
