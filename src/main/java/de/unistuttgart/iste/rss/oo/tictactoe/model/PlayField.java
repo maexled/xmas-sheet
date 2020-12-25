@@ -126,7 +126,8 @@ public class PlayField {
 	 * @param character that should be checked.
 	 * @return wether the character has won or not.
 	 */
-	public boolean hasWon(final Character character) {
+	public boolean hasWon(final Player player) {
+		final Character character = player.getCharacter();
 		int anzahl;
 		// Vertikal check
 		for (int x = 0; x < FIELD_WIDTH; x++) {

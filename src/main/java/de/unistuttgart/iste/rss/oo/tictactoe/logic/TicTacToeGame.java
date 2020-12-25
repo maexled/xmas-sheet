@@ -51,7 +51,7 @@ public class TicTacToeGame {
 	public void place(Position position) {
 		Player player = playField.getPlayersTurn();
 		player.place(position);
-		if (playField.hasWon(player.getCharacter())) {
+		if (playField.hasWon(player)) {
 			finished = true;
 		} else if (playField.isFull()) { 
 			finished = true;

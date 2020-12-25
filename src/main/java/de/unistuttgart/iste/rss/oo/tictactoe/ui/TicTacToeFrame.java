@@ -111,19 +111,19 @@ public class TicTacToeFrame extends Parent {
     	try {
     		game.place(position);
     		clearWinLabel();
-    	} catch(IllegalStateException ex) {
+    	} catch (IllegalStateException ex) {
     		alertClickEmptyField();
         	return;
     	}
     	claimButton(button, playersTurn);
     	
-    	if (game.getPlayField().isFull()) {
-    		clearPlayerTurnsLabel();
-        	alertNobodyWon();
-    	} else if (game.isFinished()) {
+    	if (game.getPlayField().hasWon(playersTurn)) {
     		clearPlayerTurnsLabel();
         	alertPlayerWon(playersTurn);
-    	} else {
+    	} else if (game.getPlayField().isFull()) {
+    		clearPlayerTurnsLabel();
+        	alertNobodyWon();
+    	}  else {
     		changePlayersTurn();
     	}
     }
