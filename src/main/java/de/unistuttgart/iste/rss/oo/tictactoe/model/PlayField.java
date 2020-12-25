@@ -28,6 +28,10 @@ public class PlayField {
 		this.players = new ArrayList<>();
 	}
 	
+	/*@
+	 @ requires players.size() >= 2;
+	 @ ensures players.contains(player);
+	 @*/
 	/**
 	 * Add a player to the playfield.
 	 * 
@@ -67,15 +71,19 @@ public class PlayField {
 		throw new IllegalStateException("Could not change the players turn to another player");
 	}
 	
+	/*@
+	 @  requires (position.getX() < FIELD_WIDTH || position.getX() >= 0) 
+	 @			|| (position.getY() < FIELD_HEIGHT || position.getY() >= 0);
+	 @*/
 	/**
 	 * 
 	 * @param x coordinate
 	 * @param y coordinate
-	 * @return the character that is on the coordinate. Return null if it is empty.
+	 * @return the player whose character is on the coordinate. Return null if it is empty.
 	 */
 	public Player getAt(final Position position) {
-		if ((position.getX() > FIELD_WIDTH || position.getX() < 0) 
-				|| position.getY() > FIELD_HEIGHT || position.getY() < 0) {
+		if ((position.getX() >= FIELD_WIDTH || position.getX() < 0) 
+				|| (position.getY() >= FIELD_HEIGHT || position.getY() < 0)) {
 			throw new IllegalArgumentException("The x or y coordinate from the postion is not in the playfield");
 		}
 		final String characterString =  this.field[position.getX()][position.getY()];
@@ -90,6 +98,10 @@ public class PlayField {
 		return null;
 	}
 	
+	/*@
+	 @ requires this.field[position.getX()][position.getY()] == null;
+	 @ ensures this.field[position.getX()][position.getY()] = character.toString();
+	 @*/
 	/**
 	 * Place a character at a specific position on the playfield.
 	 * 

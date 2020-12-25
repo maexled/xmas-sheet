@@ -22,6 +22,11 @@ public class TicTacToeGame {
 		restart();
 	}
 	
+	/**
+	 * (Re)-start the game.
+	 * 
+	 * Defines a new playfield with two players.
+	 */
 	public void restart() {
 		this.playField = new PlayField();
 		Player player1 = new Player(this.playField, "#D41F1F", Character.O);
@@ -30,11 +35,19 @@ public class TicTacToeGame {
 		this.playField.addPlayer(player2);
 		finished = false;
 	}
-	
+	/**
+	 * 
+	 * @return the current playfield of the game
+	 */
 	public PlayField getPlayField() {
 		return playField;
 	}
 	
+	/**
+	 * Place the character of the player at the position who is now on the turn.
+	 * 
+	 * @param position that is selected for the current turn.
+	 */
 	public void place(Position position) {
 		Player player = playField.getPlayersTurn();
 		player.place(position);

@@ -35,6 +35,10 @@ public class Player {
 		return color;
 	}
 	
+	/*@
+	 @ requires playField.getAt(position) == null; 
+	 @ ensures playField.getAt(position) == this;
+	 @*/
 	/**
 	 * Let the player place the character from him on a field on the given coordinates.
 	 * 
