@@ -36,7 +36,7 @@ public class PlayField {
 	 * @param player that should be added to the playfield.
 	 * @throws IllegalStateException when there are already more than 2 players on the playfield
 	 */
-	public void addPlayer(Player player) {
+	public void addPlayer(final Player player) {
 		if (players.size() >= 2) {
 			throw new IllegalStateException("This field has already 2 players.");
 		}
@@ -73,12 +73,12 @@ public class PlayField {
 	 * @param y coordinate
 	 * @return the character that is on the coordinate. Return null if it is empty.
 	 */
-	public Player getAt(Position position) {
+	public Player getAt(final Position position) {
 		if ((position.getX() > FIELD_WIDTH || position.getX() < 0) 
 				|| position.getY() > FIELD_HEIGHT || position.getY() < 0) {
 			throw new IllegalArgumentException("The x or y coordinate from the postion is not in the playfield");
 		}
-		String characterString =  this.field[position.getX()][position.getY()];
+		final String characterString =  this.field[position.getX()][position.getY()];
 		if (characterString == null) {
 			return null;
 		}
@@ -98,7 +98,7 @@ public class PlayField {
 	 * 
 	 * @throws IllegalStateException when on the position is already a character.
 	 */
-	public void placeAt(Position position, Character character) {
+	public void placeAt(final Position position, final Character character) {
 		if (this.field[position.getX()][position.getY()] != null) {
 			throw new IllegalStateException("On this field is already a character");
 		}
@@ -111,7 +111,7 @@ public class PlayField {
 	 * @param character that should be checked.
 	 * @return wheter the character has already won or not.
 	 */
-	public boolean hasWon(Character character) {
+	public boolean hasWon(final Character character) {
 		int anzahl;
 		// Vertikal check
 		for (int x = 0; x < FIELD_WIDTH; x++) {

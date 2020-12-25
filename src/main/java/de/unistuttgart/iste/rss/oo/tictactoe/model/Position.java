@@ -8,8 +8,8 @@ package de.unistuttgart.iste.rss.oo.tictactoe.model;
  */
 public class Position {
 	
-	private int x;
-	private int y;
+	private final int x;
+	private final int y;
 	
 	public Position(int x, int y) {
 		this.x = x;
