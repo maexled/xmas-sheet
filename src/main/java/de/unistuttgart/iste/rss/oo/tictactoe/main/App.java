@@ -10,7 +10,7 @@ import javafx.stage.Stage;
  * Main class which starts the app.
  */
 public class App extends Application {
-
+	
     @Override
     public void start(final Stage primaryStage) throws Exception {
         final TicTacToeGame game = new TicTacToeGame();
@@ -18,8 +18,8 @@ public class App extends Application {
         final Scene defaultScene = new Scene(frame);
 
         primaryStage.setTitle("XMas TicTacToe");
-        primaryStage.setWidth(450);
-        primaryStage.setHeight(200);
+        primaryStage.setWidth(330);
+        primaryStage.setHeight(450);
         primaryStage.setScene(defaultScene);
         primaryStage.show();
     }
