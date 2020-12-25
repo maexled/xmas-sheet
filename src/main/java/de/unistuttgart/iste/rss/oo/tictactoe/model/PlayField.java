@@ -121,7 +121,7 @@ public class PlayField {
 	 * Check if a character won.
 	 * 
 	 * @param character that should be checked.
-	 * @return wheter the character has already won or not.
+	 * @return wether the character has won or not.
 	 */
 	public boolean hasWon(final Character character) {
 		int anzahl;
@@ -171,6 +171,11 @@ public class PlayField {
 		return false;
 	}
 	
+	/**
+	 * Check if all fields are already filled with a character.
+	 * 
+	 * @return wether all fields are already filled with a character or not.
+	 */
 	public boolean isFull() {
 		for (int i = 0; i < field.length; i++) {
 			for (int j = 0; j < field[i].length; j++) {
