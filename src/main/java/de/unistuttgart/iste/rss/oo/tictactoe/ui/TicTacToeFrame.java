@@ -42,7 +42,7 @@ public class TicTacToeFrame extends Parent {
     private Label winLabel;
 
     /**
-     * Generates a sample JavaFX {@link Parent} object which displays two texts: "Hello Santa" and "Hohoho".
+     * Generates a sample JavaFX {@link Parent} object which displays the tictactoe playfield with additional informations.
      * 
      * @return Generates {@link Parent} object.
      */
@@ -77,10 +77,9 @@ public class TicTacToeFrame extends Parent {
     	tileButtons.setVgap(0.0);
         
         final Label dran = new Label("Es ist dran: ");
-        final Label playersTurnText = new Label("UNKNOWN");
-        playersTurnText.setText(game.getPlayField().getPlayersTurn().getCharacter().toString());
-    	playersTurnText.setStyle("-fx-background-color: " + game.getPlayField().getPlayersTurn().getColor());
-    	playersTurnTextLabel = playersTurnText;
+        playersTurnTextLabel = new Label("UNKNOWN");
+        playersTurnTextLabel.setText(game.getPlayField().getPlayersTurn().getCharacter().toString());
+        playersTurnTextLabel.setStyle("-fx-background-color: " + game.getPlayField().getPlayersTurn().getColor());
         
     	final Button reset = new Button("Reset");
         reset.setPrefSize(80, 40);
@@ -93,14 +92,13 @@ public class TicTacToeFrame extends Parent {
 			}
 		});
 		
-        tileButtons.getChildren().addAll(dran, playersTurnText, reset);
+        tileButtons.getChildren().addAll(dran, playersTurnTextLabel, reset);
         root.getChildren().add(tileButtons);
         
-        final Label win = new Label("");
-        win.setPrefSize(300, 40);
-        win.setPadding(new Insets(10));
-        winLabel = win;
-        root.getChildren().add(win);
+        winLabel = new Label("");
+        winLabel.setPrefSize(300, 40);
+        winLabel.setPadding(new Insets(10));
+        root.getChildren().add(winLabel);
      
         return root;
     }
