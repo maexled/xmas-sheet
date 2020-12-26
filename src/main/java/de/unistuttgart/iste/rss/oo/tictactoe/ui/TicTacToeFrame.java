@@ -62,7 +62,7 @@ public class TicTacToeFrame extends Parent {
     			button.setOnAction(new EventHandler<ActionEvent>() {
 					@Override
 					public void handle(ActionEvent event) {
-						buttonClick(button, event);
+						buttonClick(button);
 					}
 				});
     			tileButtons.getChildren().add(button);
@@ -102,7 +102,7 @@ public class TicTacToeFrame extends Parent {
         return root;
     }
     
-    private void buttonClick(Button button, ActionEvent event) {
+    private void buttonClick(Button button) {
     	if (game.isFinished()) {
     		return;
     	}
