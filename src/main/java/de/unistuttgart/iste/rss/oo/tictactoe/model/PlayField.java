@@ -14,8 +14,8 @@ import javafx.geometry.Pos;
  */
 public class PlayField {
 	
-	private final static int FIELD_WIDTH = 3;
-	private final static int FIELD_HEIGHT = 3;
+	public final static int FIELD_WIDTH = 3;
+	public final static int FIELD_HEIGHT = 3;
 	
 	private List<Player> players;
 	
@@ -128,51 +128,8 @@ public class PlayField {
 	 */
 	public boolean hasWon(final Player player) {
 		final Character character = player.getCharacter();
-		int anzahl;
-		// Vertikal check
-		for (int x = 0; x < FIELD_WIDTH; x++) {
-			anzahl = 0;
-			for (int y = 0; y < FIELD_HEIGHT; y++) {
-				if (this.field[x][y] == character.toString()) {
-					anzahl++;
-				} 
-			}
-			if (anzahl == 3) {
-				return true;
-			}
-		}
-		// Horizontal check
-		for (int y = 0; y < FIELD_HEIGHT; y++) {
-			anzahl = 0;
-			for (int x = 0; x < FIELD_WIDTH; x++) {
-				if (this.field[x][y] == character.toString()) {
-					anzahl++;
-				} 
-			}
-			if (anzahl == 3) {
-				return true;
-			}
-		}
-		// Diagonal check
-		anzahl = 0;
-		for (int x = 0; x < FIELD_WIDTH; x++) {
-			if (this.field[x][x] == character.toString()) {
-				anzahl++;
-			}
-			if (anzahl == 3) {
-				return true;
-			}
-		}
-		anzahl = 0;
-		for (int x = 0; x < FIELD_WIDTH; x++) {
-			if (this.field[x][FIELD_HEIGHT - 1 - x] == character.toString()) {
-				anzahl++;
-			}
-			if (anzahl == 3) {
-				return true;
-			}
-		}
-		return false;
+		PlayFieldChecker playFieldChecker = new PlayFieldChecker(field, player.getCharacter(), 3);
+		return playFieldChecker.isOneStreak();
 	}
 	
 	/**
