@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import de.unistuttgart.iste.rss.oo.tictactoe.model.Player.Character;
-import javafx.geometry.Pos;
 
 /**
  * Class of Playfield which manages a playfield..
@@ -62,13 +61,16 @@ public class PlayField {
 	 * Change the players turn to another player.
 	 */
 	public void changePlayersTurn() {
+		Player nowPlayer = playersTurn;
 		for (Player player : players) {
 			if (playersTurn != player) {
 				playersTurn = player;
-				return;
+				break;
 			}
 		}
-		throw new IllegalStateException("Could not change the players turn to another player");
+		if (playersTurn == nowPlayer) {
+			throw new IllegalStateException("Could not change the players turn to another player");
+		}
 	}
 	
 	/*@
