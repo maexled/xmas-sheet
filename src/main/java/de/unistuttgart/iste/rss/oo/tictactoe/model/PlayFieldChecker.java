@@ -26,14 +26,14 @@ public class PlayFieldChecker {
 	 * @return wether there is one streak with the character or not.
 	 */
 	public boolean isOneStreak() {
-		return checkVertical() || checkDiagonal() || checkDiagonal();
+		return (checkVertical() || checkHorizontal() || checkDiagonal());
 	}
 	
 	/**
 	 * 
-	 * @return wether the is one streak with the character on the vertical.
+	 * @return wether the is one streak with the character on the horizontal.
 	 */
-	private boolean checkVertical() {
+	private boolean checkHorizontal() {
 		for (int x = 0; x < PlayField.FIELD_WIDTH; x++) {
 			int fields = 0;
 			for (int y = 0; y < PlayField.FIELD_HEIGHT; y++) {
@@ -41,7 +41,7 @@ public class PlayFieldChecker {
 					fields++;
 				} 
 			}
-			if (fields == needToWin) {
+			if (fields >= needToWin) {
 				return true;
 			}
 		}
@@ -50,9 +50,9 @@ public class PlayFieldChecker {
 	
 	/**
 	 * 
-	 * @return wether the is one streak with the character on the horizontal.
+	 * @return wether the is one streak with the character on the vertical.
 	 */
-	private boolean checkHorizontal() {
+	private boolean checkVertical() {
 		for (int y = 0; y < PlayField.FIELD_HEIGHT; y++) {
 			int fields = 0;
 			for (int x = 0; x < PlayField.FIELD_WIDTH; x++) {
@@ -60,7 +60,7 @@ public class PlayFieldChecker {
 					fields++;
 				} 
 			}
-			if (fields == needToWin) {
+			if (fields >= needToWin) {
 				return true;
 			}
 		}
@@ -77,7 +77,7 @@ public class PlayFieldChecker {
 			if (this.field[x][x] == character.toString()) {
 				fields++;
 			}
-			if (fields == 3) {
+			if (fields >= 3) {
 				return true;
 			}
 		}
@@ -86,7 +86,7 @@ public class PlayFieldChecker {
 			if (this.field[x][PlayField.FIELD_HEIGHT - 1 - x] == character.toString()) {
 				fields++;
 			}
-			if (fields == 3) {
+			if (fields >= 3) {
 				return true;
 			}
 		}

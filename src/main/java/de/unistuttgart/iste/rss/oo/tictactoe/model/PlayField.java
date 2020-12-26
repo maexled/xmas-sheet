@@ -127,7 +127,6 @@ public class PlayField {
 	 * @return wether the character has won or not.
 	 */
 	public boolean hasWon(final Player player) {
-		final Character character = player.getCharacter();
 		PlayFieldChecker playFieldChecker = new PlayFieldChecker(field, player.getCharacter(), 3);
 		return playFieldChecker.isOneStreak();
 	}
