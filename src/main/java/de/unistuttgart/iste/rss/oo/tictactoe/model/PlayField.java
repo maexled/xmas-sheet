@@ -74,7 +74,7 @@ public class PlayField {
 	/*@
 	 @  requires (position.getX() < FIELD_WIDTH && position.getX() >= 0) 
 	 @			&& (position.getY() < FIELD_HEIGHT && position.getY() >= 0);
- @*/
+ 	@*/
 	/**
 	 * 
 	 * @param x coordinate
