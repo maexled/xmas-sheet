@@ -78,7 +78,7 @@ public class TicTacToeFrame extends Parent {
         
         final Label dran = new Label("Es ist dran: ");
         playersTurnTextLabel = new Label("UNKNOWN");
-        changePlayersTurn();
+        changePlayersTurnLabel();
         
     	final Button reset = new Button("Reset");
         reset.setPrefSize(80, 40);
@@ -118,13 +118,13 @@ public class TicTacToeFrame extends Parent {
     	claimButton(button, playersTurn);
     	
     	if (game.getPlayField().hasWon(playersTurn)) {
-    		clearPlayerTurnsLabel();
+    		clearPlayersTurnLabel();
         	alertPlayerWon(playersTurn);
     	} else if (game.getPlayField().isFull()) {
-    		clearPlayerTurnsLabel();
+    		clearPlayersTurnLabel();
         	alertNobodyWon();
     	}  else {
-    		changePlayersTurn();
+    		changePlayersTurnLabel();
     	}
     }
 
@@ -142,7 +142,7 @@ public class TicTacToeFrame extends Parent {
 	/**
 	 * Updates the label who is next.
 	 */
-	private void changePlayersTurn() {
+	private void changePlayersTurnLabel() {
 		playersTurnTextLabel.setText(game.getPlayField().getPlayersTurn().getCharacter().toString());
 		playersTurnTextLabel.setStyle("-fx-background-color: " + game.getPlayField().getPlayersTurn().getColor());
 	}
@@ -176,7 +176,7 @@ public class TicTacToeFrame extends Parent {
 	/**
 	 * clears the label who is next.
 	 */
-	private void clearPlayerTurnsLabel() {
+	private void clearPlayersTurnLabel() {
 		playersTurnTextLabel.setText("");
 		playersTurnTextLabel.setStyle("");
 	}

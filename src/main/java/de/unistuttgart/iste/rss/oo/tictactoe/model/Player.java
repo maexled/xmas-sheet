@@ -40,10 +40,9 @@ public class Player {
 	 @ ensures playField.getAt(position) == this;
 	 @*/
 	/**
-	 * Let the player place the character from him on a field on the given coordinates.
+	 * Let the player place the character from him on a field on the given position.
 	 * 
-	 * @param x coordinate
-	 * @param y coordinate
+	 * @param position where the character should be placed
 	 */
 	public void place(Position position) {
 		playField.placeAt(position, character);

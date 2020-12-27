@@ -74,13 +74,12 @@ public class PlayField {
 	}
 	
 	/*@
-	 @  requires (position.getX() < FIELD_WIDTH && position.getX() >= 0) 
+	 @ requires (position.getX() < FIELD_WIDTH && position.getX() >= 0) 
 	 @			&& (position.getY() < FIELD_HEIGHT && position.getY() >= 0);
- 	@*/
+ 	 @*/
 	/**
 	 * 
-	 * @param x coordinate
-	 * @param y coordinate
+	 * @param position which position should be checked
 	 * @return the player whose character is on the coordinate. Return null if it is empty.
 	 */
 	public Player getAt(final Position position) {
@@ -102,7 +101,7 @@ public class PlayField {
 	
 	/*@
 	 @ requires this.field[position.getX()][position.getY()] == null;
-	 @ ensures this.field[position.getX()][position.getY()] == character.toString();
+     @ ensures this.field[position.getX()][position.getY()] == character.toString();
 	 @*/
 	/**
 	 * Place a character at a specific position on the playfield.

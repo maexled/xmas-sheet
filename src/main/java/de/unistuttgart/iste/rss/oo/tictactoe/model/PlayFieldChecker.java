@@ -31,7 +31,7 @@ public class PlayFieldChecker {
 	
 	/**
 	 * 
-	 * @return wether the is one streak with the character on the horizontal.
+	 * @return wether there is one streak with the character on the horizontal or not.
 	 */
 	private boolean checkHorizontal() {
 		for (int x = 0; x < PlayField.FIELD_WIDTH; x++) {
@@ -50,7 +50,7 @@ public class PlayFieldChecker {
 	
 	/**
 	 * 
-	 * @return wether the is one streak with the character on the vertical.
+	 * @return wether there is one streak with the character on the vertical or not.
 	 */
 	private boolean checkVertical() {
 		for (int y = 0; y < PlayField.FIELD_HEIGHT; y++) {
@@ -69,7 +69,7 @@ public class PlayFieldChecker {
 	
 	/**
 	 * 
-	 * @return wether the is one streak with the character on the diagonal.
+	 * @return wether there is one streak with the character on the diagonal or not.
 	 */
 	private boolean checkDiagonal() {
 		int fields = 0;
