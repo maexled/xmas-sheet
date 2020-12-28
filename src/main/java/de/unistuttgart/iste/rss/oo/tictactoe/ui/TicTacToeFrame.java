@@ -77,7 +77,7 @@ public class TicTacToeFrame extends Parent {
     	tileButtons.setVgap(0.0);
         
         final Label dran = new Label("Es ist dran: ");
-        playersTurnTextLabel = new Label("UNKNOWN");
+        playersTurnTextLabel = new Label();
         changePlayersTurnLabel();
         
     	final Button reset = new Button("Reset");
@@ -102,7 +102,7 @@ public class TicTacToeFrame extends Parent {
         return root;
     }
     
-    private void buttonClick(Button button) {
+    private void buttonClick(final Button button) {
     	if (game.isFinished()) {
     		return;
     	}
@@ -134,7 +134,7 @@ public class TicTacToeFrame extends Parent {
      * @param button that is clicked
      * @param playersTurn who claims the field
      */
-	private void claimButton(Button button, final Player playersTurn) {
+	private void claimButton(final Button button, final Player playersTurn) {
 		button.setText(playersTurn.getCharacter().toString());   	
     	button.setStyle("-fx-background-color: " + playersTurn.getColor());
 	}
@@ -162,7 +162,7 @@ public class TicTacToeFrame extends Parent {
 	 */
 	private void alertPlayerWon(final Player playersTurn) {
 		winLabel.setText(playersTurn.getCharacter() + " hat gewonnnen!");
-		winLabel.setStyle("-fx-font-size: 20; -fx-background-color: " + game.getPlayField().getPlayersTurn().getColor());
+		winLabel.setStyle("-fx-font-size: 20; -fx-background-color: " + playersTurn.getColor());
 	}
 
 	/**
