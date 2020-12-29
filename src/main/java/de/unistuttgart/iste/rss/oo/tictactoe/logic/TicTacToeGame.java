@@ -6,8 +6,8 @@ import de.unistuttgart.iste.rss.oo.tictactoe.model.Player.Character;
 import de.unistuttgart.iste.rss.oo.tictactoe.model.Position;
 
 /**
- * Game class which manages the playfield and players.
- * Here gets the game started.
+ * Game class which manages the playfield and players. Here gets the game
+ * started.
  * 
  * @author Max Kästner
  *
@@ -15,13 +15,13 @@ import de.unistuttgart.iste.rss.oo.tictactoe.model.Position;
 public class TicTacToeGame {
 
 	private PlayField playField;
-	
+
 	private boolean finished;
-	
+
 	public TicTacToeGame() {
 		restart();
 	}
-	
+
 	/**
 	 * (Re)-start the game.
 	 * 
@@ -35,6 +35,7 @@ public class TicTacToeGame {
 		this.playField.addPlayer(player2);
 		finished = false;
 	}
+
 	/**
 	 * 
 	 * @return the current playfield of the game
@@ -42,7 +43,7 @@ public class TicTacToeGame {
 	public PlayField getPlayField() {
 		return playField;
 	}
-	
+
 	/**
 	 * Place the character of the player at the position who is now on the turn.
 	 * 
@@ -53,14 +54,14 @@ public class TicTacToeGame {
 		player.place(position);
 		if (playField.hasWon(player)) {
 			finished = true;
-		} else if (playField.isFull()) { 
+		} else if (playField.isFull()) {
 			finished = true;
 		} else {
 			this.playField.changePlayersTurn();
 		}
 	}
-	
+
 	public boolean isFinished() {
 		return finished;
 	}
-} 
+}

@@ -3,23 +3,25 @@ package de.unistuttgart.iste.rss.oo.tictactoe.model;
 import de.unistuttgart.iste.rss.oo.tictactoe.model.Player.Character;
 
 /**
- * PlayFieldChecker class which checks if a characater has at least one streak or not.
+ * PlayFieldChecker class which checks if a characater has at least one streak
+ * or not.
  * 
  * @author Max Kästner
  *
  */
 public class PlayFieldChecker {
-	
+
 	private final String[][] field;
 	private final Character character;
 	private final int needToWin;
-	
-	public PlayFieldChecker(final String[][] field, final Character character, final int needToWin) {
+
+	public PlayFieldChecker(final String[][] field, final Character character,
+			final int needToWin) {
 		this.field = field;
 		this.character = character;
 		this.needToWin = needToWin;
 	}
-	
+
 	/**
 	 * Check if there is one streak with the character on the field.
 	 * 
@@ -28,10 +30,11 @@ public class PlayFieldChecker {
 	public boolean isOneStreak() {
 		return (checkVertical() || checkHorizontal() || checkDiagonal());
 	}
-	
+
 	/**
 	 * 
-	 * @return wether there is one streak with the character on the horizontal or not.
+	 * @return wether there is one streak with the character on the horizontal or
+	 *         not.
 	 */
 	private boolean checkHorizontal() {
 		for (int x = 0; x < PlayField.FIELD_WIDTH; x++) {
@@ -39,7 +42,7 @@ public class PlayFieldChecker {
 			for (int y = 0; y < PlayField.FIELD_HEIGHT; y++) {
 				if (this.field[x][y] == character.toString()) {
 					fields++;
-				} 
+				}
 			}
 			if (fields >= needToWin) {
 				return true;
@@ -47,7 +50,7 @@ public class PlayFieldChecker {
 		}
 		return false;
 	}
-	
+
 	/**
 	 * 
 	 * @return wether there is one streak with the character on the vertical or not.
@@ -58,7 +61,7 @@ public class PlayFieldChecker {
 			for (int x = 0; x < PlayField.FIELD_WIDTH; x++) {
 				if (this.field[x][y] == character.toString()) {
 					fields++;
-				} 
+				}
 			}
 			if (fields >= needToWin) {
 				return true;
@@ -66,7 +69,7 @@ public class PlayFieldChecker {
 		}
 		return false;
 	}
-	
+
 	/**
 	 * 
 	 * @return wether there is one streak with the character on the diagonal or not.
@@ -92,5 +95,5 @@ public class PlayFieldChecker {
 		}
 		return false;
 	}
- 
+
 }
